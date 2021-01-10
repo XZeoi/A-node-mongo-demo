@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const router = require('./router')
 
 const app = express()
 
@@ -10,11 +11,7 @@ app.engine('html', require('express-art-template'))
 
 app.set('views', path.join(__dirname, './views/'))
 
-app.get('/', (req, res) => {
-  res.render('index.html', {
-    name: 'Node'
-  })
-})
+app.use(router)
 
 app.listen(3000, () => {
   console.log('running on 3000')
